@@ -1,5 +1,18 @@
 %% Calculates the dot product given a single start and end coordinate, for a series of common coordinates
 function [Angle] = Angle_Between_Two_Vectors_From_Coordinates(Origin, Destination, Common_Central_Coordinate_List)
+    Remove_Z = 0;
+    if(~ismember('Z', Origin.Properties.VariableNames))
+        Origin.Z = 0;
+        Remove_Z = Remove_Z + 1;
+    end
+    if(~ismember('Z', Destination.Properties.VariableNames))
+        Destination.Z = 0;
+        Remove_Z = Remove_Z + 1;
+    end
+    if(~ismember('Z', Common_Central_Coordinate_List.Properties.VariableNames))
+        Common_Central_Coordinate_List.Z = 0;
+        Remove_Z = Remove_Z + 1;
+    end
     %% Pre-handling to verify vector sizing is compatible; or handle automatic duplication of array elements
     if(height(Common_Central_Coordinate_List) == height(Origin))
         Length_Match_Common_Origin = true;

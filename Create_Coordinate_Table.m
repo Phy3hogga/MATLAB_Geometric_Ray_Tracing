@@ -1,5 +1,5 @@
 %% Generates a table format for coordinate structures
-function [Coordinate_Table] = Create_Coordinate_Table(X,Y,Z)
+function [Coordinate_Table] = Create_Coordinate_Table(X, Y, Z)
     if(nargin == 2)
         Coordinate_Table = table(Condense_Variable_To_1D(X), Condense_Variable_To_1D(Y), 'VariableNames', {'X', 'Y'});
     elseif(nargin == 3)
